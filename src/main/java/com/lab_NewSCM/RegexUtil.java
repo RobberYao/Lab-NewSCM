@@ -13,8 +13,8 @@ public class RegexUtil {
 	public static void main(String[] args) {
 
 		System.out.println("Start");
-		String str = "000,000,007,009,000,004,001,008,001,000,000,007,009,000,004,001,008,001,8AD00001;";
-		String str1 = "8AD00001,000,000,007,009,000,004,001,008,001,000,000,007,009,000,004,001,008,001;";
+		//String str = "0000,0000,0007,0009,0000,0004,0001,0008,0001,0000,0000,0007,0009,0000,0004,0001,0008,0001,8AD00001;";
+		String str1 = "8AD00001,9020,0000,0007,0009,0000,0004,0001,0008,0001,0000,0000,0007,0009,0000,0004,0001,0008,0001";
 
 		// int[] o = getParams(str);
 
@@ -46,7 +46,7 @@ public class RegexUtil {
 	public static String getParams(String str) {
 		Map<String, Double> paramsMap = new TreeMap<String, Double>();
 		Double[] params = new Double[8];
-		String pattern = ",[0-9A-F]{3}";
+		String pattern = ",[0-9A-F]{4}";
 		Pattern r = Pattern.compile(pattern);
 		Matcher m = r.matcher(str);
 		int index = 0;
@@ -57,49 +57,50 @@ public class RegexUtil {
 		while (m.find()) {
 			if (index == 0) {
 				paramStr.append(boardNumber + probeNum[0] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
+				System.out.println("====="+getVoltagesParam(hex2Decimal(m.group().substring(1, 5))));
 			} else if (index == 1) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 2) {
 				paramStr.append(boardNumber + probeNum[1] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 3) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 4) {
 				paramStr.append(boardNumber + probeNum[2] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 5) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 6) {
 				paramStr.append(boardNumber + probeNum[3] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 7) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 8) {
 				paramStr.append(boardNumber + probeNum[4] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 9) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 10) {
 				paramStr.append(boardNumber + probeNum[5] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 11) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 12) {
 				paramStr.append(boardNumber + probeNum[6] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 13) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 14) {
 				paramStr.append(boardNumber + probeNum[7] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 15) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			} else if (index == 16) {
 				paramStr.append(boardNumber + probeNum[8] + ":"
-						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))));
+						+ getTemperatureByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))));
 			} else if (index == 17) {
-				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 4)))) + ";");
+				paramStr.append(":" + getHumidityByVol(getVoltagesParam(hex2Decimal(m.group().substring(1, 5)))) + ";");
 			}
 			index++;
 		}
